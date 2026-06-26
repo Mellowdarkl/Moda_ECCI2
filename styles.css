@@ -1,0 +1,187 @@
+/* =========================================
+   SISTEMA DE TOKENS (Paleta Adaptable)
+   ========================================= */
+:root {
+    /* Modo Claro (Por defecto) */
+    --color-bg-base: #FAFAFA;
+    --color-text: #111111;
+    --color-accent-orange: #FF4500;
+    --color-accent-blue: #0033FF;
+    --color-light-gray: #EAEAEA;
+    --border-width: 2px;
+}
+
+/* Modo Oscuro (Brutalismo Nocturno) */
+[data-theme="dark"] {
+    --color-bg-base: #0A0A0A;
+    --color-text: #FAFAFA;
+    --color-light-gray: #222222;
+    /* Los acentos vibrantes se mantienen para conservar la identidad */
+    --color-accent-orange: #FF551A;
+    --color-accent-blue: #3366FF;
+}
+
+/* Transición suave al cambiar de tema */
+body,
+nav,
+section,
+div,
+card,
+.accordion-button,
+h1,
+h2,
+h3,
+p,
+span {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* =========================================
+   TIPOGRAFÍA ESTRUCTURAL
+   ========================================= */
+body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text);
+    /* Sobreescribimos la fuente base de Bootstrap */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.syne-font {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.mono-font {
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+}
+
+.inter-font {
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================================
+   CLASES DE UTILIDAD & SOBREESCRITURAS
+   ========================================= */
+.text-accent {
+    color: var(--color-accent-orange) !important;
+}
+
+.text-accent-blue {
+    color: var(--color-accent-blue) !important;
+}
+
+.bg-accent {
+    background-color: var(--color-accent-orange) !important;
+}
+
+.bg-accent-blue {
+    background-color: var(--color-accent-blue) !important;
+}
+
+.bg-light-gray {
+    background-color: var(--color-light-gray) !important;
+}
+
+/* Bordes arquitectónicos (Reemplazan la sutileza aburrida) */
+.border-thick {
+    border: var(--border-width) solid var(--color-text) !important;
+}
+
+.border-bottom-thick {
+    border-bottom: var(--border-width) solid var(--color-text) !important;
+}
+
+.border-top-thick {
+    border-top: var(--border-width) solid var(--color-text) !important;
+}
+
+.border-end-thick {
+    border-right: var(--border-width) solid var(--color-text) !important;
+}
+
+/* Sombras duras estilo imprenta antigua / Brutalismo */
+.brutalist-shadow {
+    box-shadow: 8px 8px 0px var(--color-text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brutalist-shadow:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--color-text);
+}
+
+/* =========================================
+   COMPONENTES ESPECÍFICOS
+   ========================================= */
+.hero-section {
+    min-height: 60vh;
+    background-image:
+        linear-gradient(var(--color-light-gray) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-light-gray) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Acordeón (Destruyendo el estilo Bootstrap por defecto) */
+.brutalist-accordion {
+    --bs-accordion-bg: transparent;
+    --bs-accordion-border-color: var(--color-text);
+    --bs-accordion-border-width: var(--border-width);
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-button {
+    background-color: var(--color-bg-base) !important;
+    color: var(--color-text) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--color-text) !important;
+    color: var(--color-bg-base) !important;
+}
+
+.accordion-button::after {
+    filter: invert(1) grayscale(100%) contrast(200%);
+}
+
+.accordion-button:not(.collapsed)::after {
+    filter: none;
+}
+
+/* Tarjetas (Estilo Swatch de Color / Pantone) */
+.pantone-card {
+    /* El fondo ahora responderá dinámicamente al modo claro u oscuro */
+    background-color: var(--color-bg-base) !important;
+    color: var(--color-text) !important;
+}
+
+/* Forzar que los textos descriptivos internos hereden el color correcto */
+.pantone-card .card-body,
+.pantone-card .card-text {
+    color: var(--color-text) !important;
+}
+
+/* Corregir el texto secundario (/ CERO RESIDUOS, etc.) para que no se pierda */
+.pantone-card .text-muted {
+    color: var(--color-text) !important;
+    opacity: 0.6;
+    /* Le damos una opacidad ligera para mantener la jerarquía sin perder contraste */
+}
+
+.card-color-block {
+    transition: filter 0.3s ease;
+}
+
+.pantone-card:hover .card-color-block {
+    filter: brightness(1.2);
+}
+
+/* Controles del Carrusel */
+.carousel-control-prev span,
+.carousel-control-next span {
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1;
+}
